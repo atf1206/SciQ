@@ -123,6 +123,7 @@ References
    York. 2000.
 \
 
+\d .sq
 
 // Calculate the nth moment about the mean for a sample
 moment:{[datalist; n]
@@ -151,3 +152,4 @@ skewnessAdj:{[datalist]
 	(sqrt[N*N-1] % N-2) * skew[datalist]
  };
 
+\d .
