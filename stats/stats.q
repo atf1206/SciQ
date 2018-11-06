@@ -125,6 +125,15 @@ References
 
 \d .sq
 
+// Return the geometric average of the array elements.
+// That is: n-th root of (x1 * x2 * ... * xn)
+
+gmean:{[datalist]
+	N:count datalist;
+	(prd datalist) xexp 1 % N
+ };
+
+
 // Calculate the nth moment about the mean for a sample
 moment:{[datalist; n]
 	(sum (datalist - avg datalist) xexp n) % count datalist
