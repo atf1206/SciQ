@@ -132,6 +132,13 @@ gmean:{[datalist]
 	(prd datalist) xexp 1 % N
  };
 
+// Calculate the harmonic mean along the specified axis.
+// That is:  n / (1/x1 + 1/x2 + ... + 1/xn)
+hmean:{[datalist]
+	N:count datalist;
+	N % sum (1 % datalist)
+ };
+
 // Calculate the nth moment about the mean for a sample
 moment:{[datalist; n]
 	(sum (datalist - avg datalist) xexp n) % count datalist
