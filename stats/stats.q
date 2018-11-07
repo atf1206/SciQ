@@ -127,12 +127,10 @@ References
 
 // Return the geometric average of the array elements.
 // That is: n-th root of (x1 * x2 * ... * xn)
-
 gmean:{[datalist]
 	N:count datalist;
 	(prd datalist) xexp 1 % N
  };
-
 
 // Calculate the nth moment about the mean for a sample
 moment:{[datalist; n]
@@ -140,13 +138,17 @@ moment:{[datalist; n]
  };
 
 
-// Scipy Version
+// Skew -- Scipy Version
+// Compute the skewness of a data set.
+// For normally distributed data, the skewness should be about 0. For
+// unimodal continuous distributions, a skewness value > 0 means that
+// there is more weight in the right tail of the distribution.
 skew:{[datalist]
 	N:count datalist;
 	moment[datalist;3] % moment[datalist;2] xexp 1.5
  };
 
-// Alternate Version
+// Skew -- Alternate Version
 // From https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm
 skewness:{[datalist]
 	N:count datalist;
@@ -155,7 +157,7 @@ skewness:{[datalist]
 	datalist % 3 xexp S
  };
 
-// Alternate version with adjustment
+// Skew -- Alternate version with adjustment
 skewnessAdj:{[datalist]
 	N:count datalist;
 	(sqrt[N*N-1] % N-2) * skew[datalist]
