@@ -152,6 +152,14 @@ tmean:{[datalist; limits]
 	avg datalist where datalist within limits
  };
 
+
+// Mode
+// Returns a list of the modal (most common) value(s)
+mode:{[datalist]
+	where (max C) = C:count each group datalist
+ };
+
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
