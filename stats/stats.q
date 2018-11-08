@@ -145,6 +145,13 @@ moment:{[datalist; n]
  };
 
 
+//  Compute the trimmed mean.
+//  This function finds the arithmetic mean of given values, ignoring values
+//  outside the given limits.
+tmean:{[datalist; limits]
+	avg datalist where datalist within limits
+ };
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
