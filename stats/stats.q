@@ -186,6 +186,15 @@ tmax:{[datalist;uppermax]
  };
 
 
+// Compute the trimmed sample standard deviation.
+// This function finds the sample standard deviation of given values,
+// ignoring values outside the given `limits`.
+tstd:tsdev:{[datalist;limits]
+	/sdev datalist where datalist within limits
+	sqrt tvar[datalist;limits]
+ };
+
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
