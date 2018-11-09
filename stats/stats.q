@@ -178,6 +178,13 @@ tmin:{[datalist;lowermin]
 	min datalist where datalist > lowermin
  };
 
+// Compute the trimmed maximum.
+// This function computes the maximum value of a list, while ignoring
+// values larger than a specified upper limit.
+tmax:{[datalist;uppermax]
+	max datalist where datalist < uppermax
+ };
+
 
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
