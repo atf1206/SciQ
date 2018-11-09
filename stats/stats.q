@@ -204,6 +204,13 @@ tsem:{[datalist;limits]
  };
 
 
+// Compute the coefficient of variation, the ratio of the biased standard
+// deviation to the mean.
+variation:{[datalist]
+	(sdev datalist) % avg datalist
+ };
+
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
