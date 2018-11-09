@@ -139,6 +139,7 @@ hmean:{[datalist]
 	N % sum (1 % datalist)
  };
 
+
 // Calculate the nth moment about the mean for a sample
 moment:{[datalist; n]
 	(sum (datalist - avg datalist) xexp n) % count datalist
@@ -153,10 +154,20 @@ tmean:{[datalist; limits]
  };
 
 
-// Mode
 // Returns a list of the modal (most common) value(s)
 mode:{[datalist]
 	where (max C) = C:count each group datalist
+ };
+
+
+// Compute the trimmed variance.
+// This function computes the sample variance of an array of values,
+// while ignoring values which are outside of given `limits`.
+// tvar computes the unbiased sample variance, i.e. it uses a correction
+// factor `n / (n - 1)`
+tvar: {[datalist;limits]
+	N:count datalist;
+	(N % N - 1) * svar datalist where datalist within limits
  };
 
 
