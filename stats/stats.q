@@ -238,8 +238,12 @@ skewnessAdj:{[datalist]
  };
 
 
-
-
+// Compute the kurtosis (Fisher or Pearson) of a dataset.
+// Kurtosis is the fourth central moment divided by the square of the
+// variance. Default is Fisher (subtract 3 from result).
+kurtosis:{[datalist]
+	-3 + moment[datalist;4] % (var datalist) xexp 2
+ };
 
 
 // Compute several descriptive statistics of the passed list.
@@ -275,7 +279,6 @@ relfreq:{[datalist]
 sem:{[datalist]
 	(sdev datalist where datalist within limits) % sqrt N
  };
-
 
 
 // Slices off the passed proportion of items from both ends of the passed
@@ -340,5 +343,7 @@ pearson:{[datalist1;datalist2]
 pearsonPopulation:{[datalist1;datalist2]
 	(datalist1 cov datalist2) % (sdev datalist1) * (sdev datalist2)
  };
+
+
 
 \d .
