@@ -171,6 +171,14 @@ tvar: {[datalist;limits]
  };
 
 
+// Compute the trimmed minimum.
+// This function finds the miminum value of a list, but only considering
+// values greater than a specified lower limit
+tmin:{[datalist;lowermin]
+	min datalist where datalist > lowermin
+ };
+
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
@@ -180,6 +188,7 @@ skew:{[datalist]
 	N:count datalist;
 	moment[datalist;3] % moment[datalist;2] xexp 1.5
  };
+
 
 // Skew -- Alternate Version
 // From https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm
