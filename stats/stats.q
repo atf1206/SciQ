@@ -255,4 +255,11 @@ describe:{[datalist]
  };
 
 
+// Return a 2-D array of item frequencies
+itemfreq:{[datalist]
+	count each group datalist
+ };
+
+
+
 \d .
