@@ -278,4 +278,18 @@ sem:{[datalist]
 
 
 
+// Slices off the passed proportion of items from both ends of the passed
+// array (i.e., with `proportiontocut` = 0.1, slices leftmost 10% **and**
+// rightmost 10% of scores). The trimmed values are the lowest and
+// highest ones.
+// Slices off less if proportion results in a non-integer slice index (i.e.,
+// conservatively slices off`proportiontocut`).
+trimboth:{[datalist;proportiontotrim]
+	N:count datalist;
+	ntrim:floor N * proportiontotrim;
+	(neg ntrim) _ ntrim _ asc datalist
+ };
+
+
+
 \d .
