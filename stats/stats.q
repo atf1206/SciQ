@@ -261,5 +261,12 @@ itemfreq:{[datalist]
  };
 
 
+// Calculate the standard error of the mean (or standard error of
+// measurement) of the values in the input list
+sem:{[datalist]
+	(sdev datalist where datalist within limits) % sqrt N
+ };
+
+
 
 \d .
