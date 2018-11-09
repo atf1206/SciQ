@@ -314,5 +314,31 @@ trim_mean:{[datalist;proportiontotrim]
  };
 
 
+// Calculate a Pearson correlation coefficient and the p-value for testing
+// non-correlation.
+
+// The Pearson correlation coefficient measures the linear relationship
+// between two datasets. Strictly speaking, Pearson's correlation requires
+// that each dataset be normally distributed, and not necessarily zero-mean.
+// Like other correlation coefficients, this one varies between -1 and +1
+// with 0 implying no correlation. Correlations of -1 or +1 imply an exact
+// linear relationship. Positive correlations imply that as x increases, so
+// does y. Negative correlations imply that as x increases, y decreases.
+
+// The p-value roughly indicates the probability of an uncorrelated system
+// producing datasets that have a Pearson correlation at least as extreme
+// as the one computed from these datasets. The p-values are not entirely
+// reliable but are probably reasonable for datasets larger than 500 or so.
+pearson:{[datalist1;datalist2]
+	d1:datalist1 - avg datalist1;
+	d2:datalist2 - avg datalist2;
+	(sum d1 * d2) % sqrt (sum d1 xexp 2) * (sum d2 xexp 2)
+ };
+
+// Calculates a Pearson correlation for a population (instead of a sample -
+// see https://en.wikipedia.org/wiki/Pearson_correlation_coefficient )
+pearsonPopulation:{[datalist1;datalist2]
+	(datalist1 cov datalist2) % (sdev datalist1) * (sdev datalist2)
+ };
 
 \d .
