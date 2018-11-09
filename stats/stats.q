@@ -246,6 +246,29 @@ kurtosis:{[datalist]
  };
 
 
+// Test whether the skew is different from the normal distribution.
+// This function tests the null hypothesis that the skewness of
+// the population that the sample was drawn from is the same
+// as that of a corresponding normal distribution.
+
+// Notes
+// -----
+// The sample size must be at least 8.
+
+skewtest:{[datalist]
+	if[8 > N:count datalist;:`$"error - sample size must be at least 8"];
+	b2:skew[datalist];
+	y:b2 * sqrt (N+1) * (N + 3) % (6 * N - 2);
+	beta2:3 * (((N xexp 2) + (27 * N) - 70) * (N+1) * (N + 3)) % (N - 2) * (N + 5) * (N + 7) * (N + 9);
+	W2:-1 + sqrt 2 * beta2 - 1;
+	delta:reciprocal sqrt 0.5 * log W2;
+	alpha:sqrt 2.0 % W2 - 1;
+	y:$[y=0f;1f;y];
+	Z: delta * log (y % alpha) + sqrt 1 + (y % alpha) xexp 2;
+	`Z`pvalue!(Z;`nyi)
+ };
+
+
 // Compute several descriptive statistics of the passed list.
 describe:{[datalist]
 	(!) . flip (
