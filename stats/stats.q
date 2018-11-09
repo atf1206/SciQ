@@ -237,4 +237,22 @@ skewnessAdj:{[datalist]
 	(sqrt[N*N-1] % N-2) * skew[datalist]
  };
 
+
+
+
+
+
+// Compute several descriptive statistics of the passed list.
+describe:{[datalist]
+	(!) . flip (
+		( `$"NOBs (count)";  count datalist              );
+		( `$"min-max";       (min datalist;max datalist) );
+		( `mean;             avg datalist                );
+		( `variance;         var datalist                );
+		( `skewness;         skew[datalist]              )
+		/ `kurtosis          kurtosis[datalist]
+	)
+ };
+
+
 \d .
