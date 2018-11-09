@@ -345,5 +345,11 @@ pearsonPopulation:{[datalist1;datalist2]
  };
 
 
+// Find repeats and repeat counts.
+find_repeats:{[datalist]
+	w!c w:(),where 1 < c:count each group datalist
+ };
+
+
 
 \d .
