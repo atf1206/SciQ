@@ -195,6 +195,15 @@ tstd:tsdev:{[datalist;limits]
  };
 
 
+// Compute the trimmed standard error of the mean.
+// This function finds the standard error of the mean for given
+// values, ignoring values outside the given `limits`.
+tsem:{[datalist;limits]
+	N:count d:datalist where datalist within limits;
+	(sdev d) % sqrt N
+ };
+
+
 // Skew -- Scipy Version
 // Compute the skewness of a data set.
 // For normally distributed data, the skewness should be about 0. For
