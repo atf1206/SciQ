@@ -261,6 +261,15 @@ itemfreq:{[datalist]
  };
 
 
+// Return a relative frequency histogram, using the histogram function.
+// A relative frequency  histogram is a mapping of the number of
+// observations in each of the bins relative to the total of observations.
+relfreq:{[datalist]
+	N:count datalist;
+	(count each group datalist) % N
+ };
+
+
 // Calculate the standard error of the mean (or standard error of
 // measurement) of the values in the input list
 sem:{[datalist]
