@@ -253,8 +253,8 @@ describe:{[datalist]
 		( `$"min-max";       (min datalist;max datalist) );
 		( `mean;             avg datalist                );
 		( `variance;         var datalist                );
-		( `skewness;         skew[datalist]              )
-		/ `kurtosis          kurtosis[datalist]
+		( `skewness;         skew[datalist]              );
+		( `kurtosis          kurtosis[datalist]          )
 	)
  };
 
