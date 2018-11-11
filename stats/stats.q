@@ -269,6 +269,27 @@ skewtest:{[datalist]
  };
 
 
+// Test whether a dataset has normal kurtosis.
+// This function tests the null hypothesis that the kurtosis
+// of the population from which the sample was drawn is that
+// of the normal distribution: kurtosis = 3(n-1)/(n+1)
+kurtosistest:{[datalist]
+	if[8 > N:count datalist;:`$"error - sample size must be at least 5"];
+	b2:3 + kurtosis[datalist];
+	E:3 * (N-1) % (N+1);
+	varb2:24 * N * (N-2) * (N-3) % (N+1) * (N+1) * (N+3) * (N+5);
+	x:(b2-E) % sqrt varb2;
+	b:6 * (2 + (N xexp 2) - 5 * N) % (N+7) * (N+9);
+	sqrtbeta1:b * sqrt (6.0 * (N+3) * (N+5)) % N * (N-2) * (N-3);
+	A:6 + (8 % sqrtbeta1) * (2 % sqrtbeta1) + sqrt 1 + 4.0 % sqrtbeta1 xexp 2;
+	term1:1 - 2 % A * 9;
+	denom:1 + x * sqrt 2 % A - 4.0;
+	term2:(signum denom) * $[denom = 0;0N;((1 - 2.0 % A) % abs denom) xexp (1%3)];
+	Z:(term1 - term2) % sqrt 2 % 9 * A;
+	`Z`pvalue!(Z;`nyi)
+ };
+
+
 // Compute several descriptive statistics of the passed list.
 describe:{[datalist]
 	(!) . flip (
