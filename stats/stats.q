@@ -302,6 +302,27 @@ normaltest:{[datalist]
  };
 
 
+// Perform the Jarque-Bera goodness of fit test on sample data.
+// The Jarque-Bera test tests whether the sample data has the skewness and
+// kurtosis matching a normal distribution.
+// Note that this test only works for a large enough number of data samples
+// (>2000) as the test statistic asymptotically has a Chi-squared distribution
+// with 2 degrees of freedom.
+jarque_bera:{[datalist]
+	N:count datalist;
+	d:datalist - avg datalist;
+	/ skewness = (1 / n * np.sum(diffx**3)) / (1 / n * np.sum(diffx**2))**(3 / 2.)
+	skewness: ((1 % N) * sum d xexp 3) % ((1 % N) * sum d xexp 2) xexp 1.5;
+	/ kurtosis = (1 / n * np.sum(diffx**4)) / (1 / n * np.sum(diffx**2))**2
+	kurtosis: ((1 % N) * sum d xexp 4) % ((1 % N) * sum d xexp 2) xexp 2;
+	/ jb_value = n / 6 * (skewness**2 + (kurtosis - 3)**2 / 4)
+	jb_value: (N % 6) * ((skewness xexp 2) + ((kurtosis - 3) xexp 2) % 4);
+	/p = 1 - distributions.chi2.cdf(jb_value, 2)
+
+	return `jb_value`p!(jb_value;`nyi)
+ };
+
+
 // Compute several descriptive statistics of the passed list.
 describe:{[datalist]
 	(!) . flip (
