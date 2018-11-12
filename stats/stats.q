@@ -290,6 +290,18 @@ kurtosistest:{[datalist]
  };
 
 
+// Test whether a sample differs from a normal distribution.
+// This function tests the null hypothesis that a sample comes
+// from a normal distribution.  It is based on D'Agostino and
+// Pearson's [1]_, [2]_ test that combines skew and kurtosis to
+// produce an omnibus test of normality.
+normaltest:{[datalist]
+	s:skewtest[datalist]`Z;
+	k:kurtosistest[datalist]`Z;
+	k2:(s*s) + (k*k)
+ };
+
+
 // Compute several descriptive statistics of the passed list.
 describe:{[datalist]
 	(!) . flip (
