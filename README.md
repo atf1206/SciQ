@@ -6,3 +6,12 @@ https://github.com/scipy/scipy
 
 
 Copyright Andrew Fritz 2018
+
+
+## Build instructions for Mac:
+clang -shared -undefined dynamic_lookup -o [filename].so [filename].c
+(or clang++)
+
+## Other 
+
+
