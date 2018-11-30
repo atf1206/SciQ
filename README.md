@@ -1,3 +1,7 @@
+# WIP
+No guarantees, use at your own risk
+
+
 # Sci_q
 Stats functions for q/kdb
 
@@ -14,4 +18,4 @@ clang -shared -undefined dynamic_lookup -o [filename].so [filename].c
 
 ## Other 
 
-
+.
