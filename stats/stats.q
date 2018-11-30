@@ -22,33 +22,28 @@ both list and array versions but were deemed useful.
 
 Central Tendency
 ----------------
-.. autosummary::
-   :toctree: generated/
     gmean
     hmean
     mode
+
 Moments
 -------
-.. autosummary::
-   :toctree: generated/
     moment
     variation
     skew
     kurtosis
     normaltest
+
 Altered Versions
 ----------------
-.. autosummary::
-   :toctree: generated/
     tmean
     tvar
     tstd
     tsem
     describe
+
 Frequency Stats
 ---------------
-.. autosummary::
-   :toctree: generated/
     itemfreq
     scoreatpercentile
     percentileofscore
@@ -56,23 +51,19 @@ Frequency Stats
     relfreq
 Variability
 -----------
-.. autosummary::
-   :toctree: generated/
     obrientransform
     sem
     zmap
     zscore
     iqr
+
 Trimming Functions
 ------------------
-.. autosummary::
-   :toctree: generated/
    trimboth
    trim1
+
 Correlation Functions
 ---------------------
-.. autosummary::
-   :toctree: generated/
    pearsonr
    fisher_exact
    spearmanr
@@ -81,10 +72,9 @@ Correlation Functions
    weightedtau
    linregress
    theilslopes
+
 Inferential Stats
 -----------------
-.. autosummary::
-   :toctree: generated/
    ttest_1samp
    ttest_ind
    ttest_ind_from_stats
@@ -99,26 +89,23 @@ Inferential Stats
    friedmanchisquare
    brunnermunzel
    combine_pvalues
+
 Statistical Distances
 ---------------------
-.. autosummary::
-   :toctree: generated/
    wasserstein_distance
    energy_distance
+
 ANOVA Functions
 ---------------
-.. autosummary::
-   :toctree: generated/
    f_oneway
+
 Support Functions
 -----------------
-.. autosummary::
-   :toctree: generated/
    rankdata
 
 References
 ----------
-.. [CRCProbStat2000] Zwillinger, D. and Kokoska, S. (2000). CRC Standard
+   [CRCProbStat2000] Zwillinger, D. and Kokoska, S. (2000). CRC Standard
    Probability and Statistics Tables and Formulae. Chapman & Hall: New
    York. 2000.
 \
